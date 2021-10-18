@@ -1,0 +1,55 @@
+.eligible_condition {
+  .content {
+    color: #000;
+  }
+
+  input[type="text"] {
+    color: #000;
+
+    &.validation_error {
+      color: red;
+    }
+  }
+
+  p.validation_text {
+    color: #000;
+
+    &.validation_error {
+      color: red;
+    }
+  }
+
+  select {
+    color: #000;
+  }
+
+  label {
+    color: #000;
+
+    input[type="checkbox"] {
+      color: #000;
+    }
+
+    input[type="radio"] {
+      color: #000;
+    }
+  }
+
+  button {
+    &.precondition_skip {
+      color: #000;
+    }
+    &.precondition_next {
+      color: #000;
+    }
+    &.negative {
+      color: #000;
+    }
+    &.positive {
+      color: #000;
+    }
+    &.next {
+      color: #000;
+    }
+  }
+}

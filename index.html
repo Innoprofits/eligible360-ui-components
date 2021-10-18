@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eligible360.ca UI Components</title>
+    <style>
+        body {
+            background: #eeeeee;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .component {
+            background: #ffffff;
+            border-radius: 6px;
+            box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+            width: 500px;
+            height: 300px;
+            padding: 16px;
+        }
+        input[type="text"], label {
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="eligible-ui-components.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="component">
+        <div id="eligible-condition"></div>
+    </div>
+
+</div>
+
+
+<script src="eligible-ui-components.js"></script>
+<script>
+
+    let index = 0;
+
+    let eligibleCondition = new EligibleCondition({
+        el: "#eligible-condition",
+        onAnswer: function (key, value) {
+            index = index + 1;
+            console.log({key: key, value: value});
+            eligibleCondition.render(conds[index])
+        },
+    });
+
+    let conds = [
+        {
+            "id": "G7",
+            "pre_condition_activated": false,
+            "content": "Quel était le chiffre d'affaires approximatif de votre dernière année fiscale ?",
+            "input": "Text",
+            "configuration": {
+                "pattern": "^\\d+$",
+                "validation_reqs": "Entrez le chiffre approximatif en dollars sans espace ni caractères spéciaux."
+            }
+        },
+        {
+            "id": 29,
+            "pre_condition_activated": true,
+            "pre_condition_content": "Aloha amigo?",
+            "content": "Investissez-vous l'équivalent de 1% de la masse salariale en formation de la main-d'oeuvre ?",
+            "input": "Boolean",
+            "positive_answer_label": "Oui",
+            "negative_answer_label": "Non"
+        },
+        {
+            "id": "G4",
+            "pre_condition_activated": false,
+            "content": "Quel type de financement cherchez-vous aujourd'hui ?",
+            "input": "Checkbox",
+            "configuration": {
+                "options": [
+                    {
+                        "id": "0",
+                        "value": "Un financement urgent lié à la pandémie"
+                    },
+                    {
+                        "id": "1",
+                        "value": "Un financement pour un nouveau projet"
+                    },
+                    {
+                        "id": "2",
+                        "value": "Un financement pour des enjeux de ressources humaines (recrutement, licenciement, etc.)"
+                    },
+                    {
+                        "id": "3",
+                        "value": "Un financement pour les activités courantes de l'entreprise"
+                    },
+                    {
+                        "id": "1617728731129",
+                        "value": "Un financement pour l'implémentation d'une pratique d'affaires (ERP, CRM, Système de coût de revient, etc.)"
+                    },
+                    {
+                        "id": "1617728881912",
+                        "value": "Un financement pour la réalisation d'études de faisabilité (analyse juridique ou de marché, l'évaluation de procédés, etc.) "
+                    }
+                ]
+            }
+        }
+    ];
+
+    eligibleCondition.render(conds[0]);
+
+</script>
+
+</body>
+</html>
